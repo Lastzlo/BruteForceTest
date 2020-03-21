@@ -1,6 +1,5 @@
 package version1;
 
-import java.security.SecureRandom;
 import java.util.Objects;
 
 public class Main {
@@ -12,7 +11,8 @@ public class Main {
     //все символы которые будут использоваться
     private static final String DATA = CHAR_LOWER + CHAR_UPPER + NUMBER;
 
-    private static final String PASS = "12345";
+    //ПАРОЛЬ КОТОРЫЙ ИЩЕМ
+    private static final String PASS = "12";
     private static int hashCode = Objects.hash (PASS);
 
     public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class Main {
             brutPass = generateString(massive);
             equalToHashCode(brutPass);
 
-            massive = updMassive(massive);
+            updMassive (massive);
         } while (massive[PASS.length () - 1] != (DATA.length () - 1));
         System.out.println ("Поиск закончен");
     }
@@ -53,7 +53,6 @@ public class Main {
         for (int i = 0; i <massive.length ; i++) {
             if(massive[i] >=DATA.length ()-1){
                 massive[i] = 0;
-                continue;
             } else {
                 massive[i]++;
                 break;
